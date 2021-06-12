@@ -38,8 +38,20 @@ enum custom_keycodes {
     LAYER7,
 };
 
+#define MT_AS MT(MOD_LSFT,KC_A)
+#define MT_NS MT(MOD_RSFT,KC_N)
+
 #define MT_HS MT(MOD_LSFT,KC_H)
-#define MT_SS MT(MOD_LSFT,KC_S)
+#define MT_SS MT(MOD_RSFT,KC_S)
+
+#define MT_H3 MT(MO(2),KC_H)
+#define MT_S3 MT(MO(2),KC_S)
+
+#define MT_I4 MT(MO(3),KC_I)
+#define MT_T4 MT(MO(3),KC_T)
+
+#define MT_EC MT(KC_LCTL,KC_E)
+#define MT_RC MT(KC_RCTL,KC_R)
 
 /*
 X-Bow Nature
@@ -54,6 +66,7 @@ Gesamt: 86 Tasten
 */
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
+
   /* Keymap VANILLA: (Base Layer) Default Layer
    *
    * |---------------------------------------------------------------------------------------------------------------------------------|
@@ -70,43 +83,39 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |Ctrl | GUI |     Alter   |    Space   |   Ctrl   |   Shift   |     Space     |    Alter   |  FN  | Ctrl | Lft  |  Dn |  Rig |
    * |---------------------------------------------------------------------------------------------------------------------------------|
    */
-   /*
-  (deflayer level1
-  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
-  tab       1    2    3    4    5    6    7    8    9    0    -    =    bspc
-  lmet      k    .    @o   ,    y    v    g    @csp l    ß    z    ´
-  @lv3      @hs  @aw  @ec  @i4  u    d    @t4  @rc  @nw  @ss  f    @lv3 ret
-  lsft @lv4 x    @qa  @ä3  ü    ö    b    @p3  @wa  m    j    rsft
-  lctl      lmet lalt          spc             @lv4 rmet @ctlc _
-)
-*/
 
   [_LAYER0] = LAYOUT(
-    DE_CIRC,   KC_F1,      KC_F2,  KC_F3,      KC_F4,    KC_F5,    KC_F6,      KC_F7,  KC_F8,  KC_F9,  KC_F10, KC_F11, KC_F12,     KC_INS,             KC_DEL,
-    KC_ESC,     KC_1,       KC_2,   KC_3,       KC_4,     KC_5,                 KC_6,   KC_7,   KC_8,   KC_9,   KC_0,   NE_MINS,    NE_GRV,     KC_BSPC,
-    KC_TAB,     KC_K,       KC_DOT, KC_O,       KC_COMM,  KC_Z,                 KC_V,   KC_G,   KC_C,   KC_L,   DE_SS,  KC_Y,       DE_ACUT,    KC_NO,  KC_NO,
-    MO(2),      MT_HS,      KC_A,   KC_E,       KC_I,     KC_U,     KC_BSPC,    KC_D,   KC_T,   KC_R,   KC_N,   MT_SS,  KC_F,       KC_ENT,             KC_RALT,
-    MO(3),      KC_X,       KC_Q,   DE_ADIA,    DE_UDIA,  DE_ODIA , KC_ENT,     KC_B,   KC_P,   KC_W,   KC_M,   KC_J,   KC_RSFT,                KC_UP,
-    KC_LCTL,    KC_LGUI,    KC_LALT,            KC_SPC,         KC_LCTL, KC_LSFT, MO(2),          MO(3),          MO(7),  KC_RCTL,    KC_LEFT,    KC_DOWN,    KC_RGHT),
+    KC_ESC,     KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,      KC_F6,      KC_F7,      KC_F8,          KC_F9,          KC_F10,         KC_F11,         KC_F12,     KC_INS,                 KC_DEL,
+    DE_CIRC,    KC_1,           KC_2,           KC_3,           KC_4,           KC_5,                   KC_6,       KC_7,           KC_8,           KC_9,           KC_0,           NE_MINS,    NE_GRV,     KC_BSPC,
+    KC_TAB,     KC_K,           KC_DOT,         KC_O,           KC_COMM,        KC_Z,                   KC_V,       KC_G,           KC_C,           KC_L,           DE_SS,          KC_Y,       DE_ACUT,    KC_NO,      KC_NO,
+    MO(2),      LSFT_T(KC_H),   LCTL_T(KC_A),   LGUI_T(KC_E),   LALT_T(KC_I),   KC_U,       KC_BSPC,    KC_D,       RALT_T(KC_T),   RGUI_T(KC_R),   RCTL_T(KC_N),   RSFT_T(KC_S),   KC_F,       KC_ENT,                 KC_RALT,
+    MO(3),      KC_X,           KC_Q,           DE_ADIA,        DE_UDIA,        DE_ODIA,    KC_ENT,     KC_B,       KC_P,           KC_W,           KC_M,           KC_J,           KC_RSFT,                KC_UP,
+    KC_LCTL,    KC_LGUI,        KC_LALT,                        KC_SPC,                  MO(2), MO(3),  KC_SPC,                     KC_RALT,                        MO(7),          KC_RCTL,    KC_LEFT,    KC_DOWN,    KC_RGHT),
 
   [_LAYER1] = LAYOUT(
-    RESET, TO(0), KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    DEBUG, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_NO, KC_NO, KC_UNDS, KC_LBRC, KC_RBRC, KC_CIRC, KC_EXLM, KC_LT, KC_GT, KC_EQL, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO,
-    KC_TRNS, KC_BSLASH, KC_SLSH, KC_LCBR, KC_RCBR, KC_ASTR, KC_NO, KC_QUES, KC_LPRN, KC_RPRN, KC_MINS, KC_COLN, KC_AT, KC_TRNS, KC_TRNS,
-    KC_TRNS, LSFT(KC_3), KC_DLR, LSFT(KC_NUBS), LSFT(KC_GRV), KC_GRV, KC_NO, KC_PLUS, KC_PERC, KC_DQUO, KC_QUOT, KC_SCLN, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS),
+    KC_ESC,     KC_F1,      KC_F2,      KC_F3,      KC_F4,      KC_F5,      KC_F6,      KC_F7,      KC_F8,      KC_F9,      KC_F10,     KC_F11,     KC_F12,     KC_INS,                 KC_DEL,
+    DE_CIRC,    KC_1,       KC_2,       KC_3,       KC_4,       KC_5,                   KC_6,       KC_7,       KC_8,       KC_9,       KC_0,       NE_MINS,    NE_GRV,     KC_BSPC,
+    KC_TAB,     KC_K,       KC_DOT,     KC_O,       KC_COMM,    KC_Z,                   KC_V,       KC_G,       KC_C,       KC_L,       DE_SS,      KC_Y,       DE_ACUT,    KC_NO,      KC_NO,
+    KC_TRNS,    MT_H3,      MT_AS,      MT_EC,      MT_I4,      KC_U,       KC_BSPC,    KC_D,       MT_T4,      MT_RC,      MT_NS,      MT_S3,      KC_F,       KC_ENT,                 KC_RALT,
+    KC_LSFT,    KC_X,       KC_Q,       DE_ADIA,    DE_UDIA,    DE_ODIA,    KC_ENT,     KC_B,       KC_P,       KC_W,       KC_M,       KC_J,       KC_RSFT,                KC_UP,
+    KC_LCTL,    KC_LGUI,    KC_LALT,                KC_SPC,           KC_LCTL, KC_LSFT, KC_SPC,                 KC_RALT,                MO(7),      KC_RCTL,    KC_LEFT,    KC_DOWN,    KC_RGHT),
 
   [_LAYER2] = LAYOUT(
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PGUP, KC_BSPC, KC_UP, KC_DEL, KC_PGDN, KC_NO, KC_P7, KC_P8, KC_P9, KC_PLUS, KC_MINS, KC_NO, KC_NO, KC_NO, KC_NO, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, KC_TRNS, KC_NO, KC_P4, KC_P5, KC_P6, KC_COMM, KC_DOT, KC_NO, KC_NO, KC_NO, KC_ESC, KC_TAB, KC_INS, KC_ENT, KC_UNDO, KC_TRNS, KC_COLN, KC_P1, KC_P2, KC_P3, KC_SCLN, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_P0, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
+    RESET,      TO(0),      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                  KC_NO,
+    DEBUG,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,                  KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
+    KC_NO,      KC_NO,      DE_UNDS,    DE_LBRC,    DE_RBRC,    DE_CIRC,                DE_EXLM,    DE_LABK,    DE_RABK,    DE_EQL,     KC_NO,      KC_NO,      KC_NO,      KC_NO,      KC_NO,
+    KC_TRNS,    DE_BSLS,    DE_SLSH,    DE_LCBR,    DE_RCBR,    DE_ASTR,    KC_NO,      DE_QUES,    DE_LPRN,    DE_RPRN,    DE_MINS,    DE_COLN,    DE_AT,      KC_TRNS,                KC_TRNS,
+    KC_TRNS,    DE_HASH,    DE_DLR,     DE_PIPE,    DE_TILD,    DE_CIRC,    KC_NO,      DE_PLUS,    DE_PERC,    DE_DQUO,    DE_QUOT,    DE_SCLN,    KC_TRNS,                KC_TRNS,
+    KC_TRNS,    KC_TRNS,    KC_TRNS,                KC_TRNS,          KC_TRNS, KC_TRNS, KC_TRNS,                KC_TRNS,                KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS,    KC_TRNS),
 
   [_LAYER3] = LAYOUT(
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_PGUP, KC_BSPC, KC_UP, KC_DEL, KC_PGDN, KC_NO, KC_P7, KC_P8, KC_P9, KC_PLUS, KC_MINS, KC_NO, KC_NO, KC_NO, KC_NO, KC_HOME, KC_LEFT, KC_DOWN, KC_RGHT, KC_END, KC_TRNS, KC_NO, KC_P4, KC_P5, KC_P6, KC_COMM, KC_DOT, KC_NO, KC_NO, KC_NO, KC_ESC, KC_TAB, KC_INS, KC_ENT, KC_UNDO, KC_TRNS, KC_COLN, KC_P1, KC_P2, KC_P3, KC_SCLN, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_P0, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
 
   [_LAYER4] = LAYOUT(
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
 
   [_LAYER5] = LAYOUT(
-    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
+    KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_TRNS, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO, KC_NO),
 
   /* Keymap VANILLA: (Base Layer) Default Layer
    *

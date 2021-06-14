@@ -26,16 +26,19 @@
 #define _LAYER5 5
 #define _LAYER6 6
 #define _LAYER7 7
+#define _LAYER8 8
 
-#define _KOY1 0
-#define _KOY2 1
-#define _KOY3 2
-#define _KOY4 3
-#define _KOY5 4
-#define _KOY6 5
+#define _KOY1 _LAYER0
+#define _KOY2 _LAYER1
+#define _KOY3 _LAYER2
+#define _KOY4 _LAYER3
+#define _KOY5 _LAYER4
+#define _KOY6 _LAYER5
 
-#define _XBOWS 6
-#define _FUNC  7
+#define _XBOWS _LAYER6
+#define _FUNC  _LAYER7
+
+#define _MOUSE _LAYER8
 
 enum custom_keycodes {
     LAYER0 = SAFE_RANGE,
@@ -55,6 +58,7 @@ enum custom_keycodes {
 #define MO_KOY3 MO(_KOY3)
 #define MO_KOY4 MO(_KOY4)
 #define MO_FUNC MO(_FUNC)
+#define MO_MOUS MO(_MOUSE)
 
 #define MT_AS MT(MOD_LSFT,KC_A)
 #define MT_NS MT(MOD_RSFT,KC_N)
@@ -70,6 +74,10 @@ enum custom_keycodes {
 
 #define MT_EC MT(KC_LCTL,KC_E)
 #define MT_RC MT(KC_RCTL,KC_R)
+
+#define MT_SPC3 MT(MO_KOY3, KC_SPC)
+#define MT_SPC4 MT(MO_KOY4, KC_SPC)
+#define MT_SPC8 MT(MO_MOUS, KC_SPC)
 
 #define LSFT_TH LSFT_T(KC_H)
 #define LCTL_TA LCTL_T(KC_A)
@@ -119,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,   KC_K,     KC_DOT,   KC_O,     KC_COMM,  KC_Z,                   KC_V,   KC_G,     KC_C,     KC_L,     DE_SS,   KC_Y,     DE_ACUT,  KC_RALT,  KC_LNUM,
     MO_KOY3,  LSFT_TH,  LCTL_TA,  LGUI_TE,  LALT_TI,  KC_U,       KC_BSPC,    KC_D,   RALT_TT,  RGUI_TR,  RCTL_TN,  RSFT_TS, KC_F,     MO_KOY3,            KC_ENT,
     MO_KOY4,  KC_X,     KC_Q,     DE_ADIA,  DE_UDIA,  DE_ODIA,    KC_ENT,     KC_B,   KC_P,     KC_W,     KC_M,     KC_J,    KC_RSFT,            KC_UP,
-    KC_LCTL,  KC_LGUI,  KC_LALT,            KC_SPC,          MO_KOY3, KC_SPC, MO_KOY4,          KC_RALT,            MO_FUNC, KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
+    KC_LCTL,  KC_LGUI,  KC_LALT,            MT_SPC3,         MO_KOY3, MT_SPC8, MT_SPC4,            KC_RALT,            MO_FUNC, KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
   [_KOY2] = LAYOUT(
     _______,  _______,  _______,  _______,  _______,  _______,    _______,    DE_EURO, _______, _______,  _______,  _______, _______,  _______,            _______,
@@ -144,6 +152,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_END,     XXXXXXX,    XXXXXXX, LSFT_T4, DE_5,     DE_6,     KC_PCMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
     _______,  KC_ESC,   KC_TAB,   KC_INS,   KC_ENT,   KC_UNDO,    XXXXXXX,    KC_COLN, DE_1,    DE_2,     DE_3,     KC_SCLN, XXXXXXX,            XXXXXXX,
     XXXXXXX,  XXXXXXX,  KC_P0,              DE_0,             XXXXXXX, XXXXXXX,  _______,          XXXXXXX,            XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
+
+  [_MOUSE] = LAYOUT(
+    XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,      XXXXXXX,    XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,      XXXXXXX,                  XXXXXXX,
+    XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_WH_U,  XXXXXXX,  XXXXXXX,                  XXXXXXX,      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,      XXXXXXX,      XXXXXXX,
+    XXXXXXX,  XXXXXXX,  KC_BTN1,  KC_MS_U,  KC_BTN2,  XXXXXXX,                  XXXXXXX,      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX,
+    XXXXXXX,  KC_WH_L,  KC_MS_L,  KC_MS_D,  KC_MS_R,  KC_WH_R,    XXXXXXX,      XXXXXXX,      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,      XXXXXXX,                  XXXXXXX,
+    XXXXXXX,  XXXXXXX,  KC_BTN3,  KC_WH_D,  KC_BTN4,  XXXXXXX,    XXXXXXX,      XXXXXXX,      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,                  XXXXXXX,
+    XXXXXXX,  XXXXXXX,  XXXXXXX,            XXXXXXX,          XXXXXXX, _______, XXXXXXX,                      XXXXXXX,                          XXXXXXX,          XXXXXXX,      XXXXXXX,      XXXXXXX,      XXXXXXX),
 
   [_KOY5] = LAYOUT(
     XXXXXXX,      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,      XXXXXXX,    XXXXXXX,      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,      XXXXXXX,                  XXXXXXX,

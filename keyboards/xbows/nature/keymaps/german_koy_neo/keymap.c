@@ -103,7 +103,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TAB,     KC_K,           KC_DOT,         KC_O,           KC_COMM,        KC_Z,                   KC_V,       KC_G,           KC_C,           KC_L,           DE_SS,          KC_Y,       DE_ACUT,    KC_RALT,    KC_ENT,
     MO_KOY3,    LSFT_T(KC_H),   LCTL_T(KC_A),   LGUI_T(KC_E),   LALT_T(KC_I),   KC_U,       KC_BSPC,    KC_D,       RALT_T(KC_T),   RGUI_T(KC_R),   RCTL_T(KC_N),   RSFT_T(KC_S),   KC_F,       MO_KOY3,                KC_ENT,
     MO_KOY4,    KC_X,           KC_Q,           DE_ADIA,        DE_UDIA,        DE_ODIA,    KC_ENT,     KC_B,       KC_P,           KC_W,           KC_M,           KC_J,           KC_RSFT,                KC_UP,
-    KC_LCTL,    KC_LGUI,        KC_LALT,                        KC_SPC,               MO_KOY3, MO_KOY4, KC_SPC,                     KC_RALT,                        MO(_FUNC),      KC_RCTL,    KC_LEFT,    KC_DOWN,    KC_RGHT),
+    KC_LCTL,    KC_LGUI,        KC_LALT,                        KC_SPC,               MO_KOY3, KC_SPC,  MO_KOY4,                    KC_RALT,                        MO(_FUNC),      KC_RCTL,    KC_LEFT,    KC_DOWN,    KC_RGHT),
 
   [_KOY2] = LAYOUT(
     KC_TRNS,    KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,    KC_TRNS,    DE_EURO,    KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,    KC_TRNS,                KC_DEL,
@@ -127,7 +127,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_NO,      KC_PGUP,        KC_BSPC,        KC_UP,          KC_DEL,         KC_PGDN,                KC_NO,      DE_7,           DE_8,           DE_9,           KC_PLUS,        KC_MINS,    KC_NO,      KC_NO,      KC_NO,
     KC_NO,      KC_HOME,        KC_LEFT,        KC_DOWN,        KC_RGHT,        KC_END,     KC_TRNS,    KC_NO,      DE_4,           DE_5,           DE_6,           KC_COMM,        KC_DOT,     KC_NO,                  KC_NO,
     KC_NO,      KC_ESC,         KC_TAB,         KC_INS,         KC_ENT,         KC_UNDO,    KC_TRNS,    KC_COLN,    DE_1,           DE_2,           DE_3,           KC_SCLN,        KC_NO,                  KC_NO,
-    KC_NO,      KC_NO,          KC_P0,                          KC_NO,                  KC_NO, KC_NO,   KC_TRNS,                    KC_NO,                          KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO),
+    KC_NO,      KC_NO,          KC_P0,                          KC_NO,                  KC_NO, KC_NO,   DE_0,                    KC_NO,                          KC_NO,          KC_NO,      KC_NO,      KC_NO,      KC_NO),
 
   [_KOY5] = LAYOUT(
     KC_NO,      KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,      KC_TRNS,    KC_NO,      KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,      KC_NO,                  KC_NO,

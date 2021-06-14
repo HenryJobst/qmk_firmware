@@ -80,6 +80,8 @@ enum custom_keycodes {
 #define RCTL_TN RCTL_T(KC_N)
 #define RSFT_TS RSFT_T(KC_S)
 
+#define LSFT_T4 LSFT_T(DE_4)
+
 /*
 X-Bow Nature
 1. Zeile: 15 Tasten
@@ -136,12 +138,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  _______,  _______,            _______,         _______, _______,_______,          _______,            _______, _______,  _______,  _______,  _______),
 
   [_KOY4] = LAYOUT(
-    XXXXXXX,  _______,   _______,  _______,  _______,  _______,    _______,   _______, _______, _______,  _______,  _______, _______,  _______,            _______,
+    XXXXXXX,  _______,  _______,  _______,  _______,  _______,    _______,    _______, _______, _______,  _______,  _______, _______,  _______,            _______,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX,  KC_PSLS,  KC_PAST, KC_PMNS,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  KC_PGUP,  KC_BSPC,  KC_UP,    KC_DEL,   KC_PGDN,                XXXXXXX, DE_7,    DE_8,     DE_9,     KC_PPLS, KC_PMNS,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_END,     XXXXXXX,    XXXXXXX, DE_4,    DE_5,     DE_6,     KC_PCMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
-    XXXXXXX,  KC_ESC,   KC_TAB,   KC_INS,   KC_ENT,   KC_UNDO,    XXXXXXX,    KC_COLN, DE_1,    DE_2,     DE_3,     KC_SCLN, XXXXXXX,            XXXXXXX,
-    XXXXXXX,  XXXXXXX,  KC_P0,              XXXXXXX,         XXXXXXX, XXXXXXX,DE_0,             XXXXXXX,            XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
+    XXXXXXX,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_END,     XXXXXXX,    XXXXXXX, LSFT_T4, DE_5,     DE_6,     KC_PCMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
+    _______,  KC_ESC,   KC_TAB,   KC_INS,   KC_ENT,   KC_UNDO,    XXXXXXX,    KC_COLN, DE_1,    DE_2,     DE_3,     KC_SCLN, XXXXXXX,            XXXXXXX,
+    XXXXXXX,  XXXXXXX,  KC_P0,              DE_0,             XXXXXXX, XXXXXXX,  _______,          XXXXXXX,            XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
 
   [_KOY5] = LAYOUT(
     XXXXXXX,      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,      XXXXXXX,    XXXXXXX,      XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,      XXXXXXX,                  XXXXXXX,

@@ -19,6 +19,7 @@
 #include <keymap_neo2.h>
 
 // Configure the global tapping term (default: 200ms)
+#undef TAPPING_TERM
 #define TAPPING_TERM 300
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
@@ -219,7 +220,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,  _______,  _______,  _______,  _______,  _______,    _______,    _______, _______, _______,  _______,  _______, _______,  _______,            _______,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX,  KC_PSLS,  KC_PAST, KC_PMNS,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  KC_PGUP,  KC_BSPC,  KC_UP,    KC_DEL,   KC_PGDN,                XXXXXXX, DE_7,    DE_8,     DE_9,     KC_PPLS, KC_PMNS,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_END,     XXXXXXX,    XXXXXXX, LSFT_T4, DE_5,     DE_6,     KC_COMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
+    // Scheme: SCGA/⇧⎈◆⎇
+    XXXXXXX,  KC_HOME,  LSFT_TLEFT,  LCTL_TDOWN,  LGUI_TRGHT,  LALT_TEND,     XXXXXXX,    XXXXXXX, RALT_T4, RGUI_T5,  RCTL_T6,  RSFT_TCOMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
     _______,  KC_ESC,   KC_TAB,   KC_INS,   KC_ENT,   KC_UNDO,    XXXXXXX,    KC_COLN, DE_1,    DE_2,     DE_3,     KC_SCLN, XXXXXXX,            XXXXXXX,
     XXXXXXX,  XXXXXXX,  KC_P0,              DE_0,             DE_0, XXXXXXX,  _______,          XXXXXXX,            XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
 

@@ -18,6 +18,16 @@
 #include <keymap_german.h>
 #include <keymap_neo2.h>
 
+// Configure the global tapping term (default: 200ms)
+#define TAPPING_TERM 300
+
+// Prevent normal rollover on alphas from accidentally triggering mods.
+#define IGNORE_MOD_TAP_INTERRUPT
+
+// Enable rapid switch from tap to hold, disables double tap hold auto-repeat.
+#define TAPPING_FORCE_HOLD
+
+
 #define _LAYER0 0
 #define _LAYER1 1
 #define _LAYER2 2
@@ -79,16 +89,73 @@ enum custom_keycodes {
 #define MT_SPC4 MT(MO_KOY4, KC_SPC)
 #define MT_SPC8 MT(MO_MOUS, KC_SPC)
 
+/* Common terminology for modifiers
+Full Modifier Name 	Abbreviation 	Symbol
+Shift               S 	          ⇧
+Control 	          C 	          ⎈
+Alt/Option 	        A            	⎇
+GUI/Win/Command    	G 	          ◆
+No modifier/mod-tap _ 	          _
+
+*/
+
+/* Abbreviations for home row mods */
+
+// Layer 1 (Characters):
+// Keys Left: H,A,E,I
+// Keys Right: T,R,N,S
+
+// Scheme: SCGA/⇧⎈◆⎇
+// left-hand
 #define LSFT_TH LSFT_T(KC_H)
 #define LCTL_TA LCTL_T(KC_A)
 #define LGUI_TE LGUI_T(KC_E)
 #define LALT_TI LALT_T(KC_I)
+// right-hand
 #define RALT_TT RALT_T(KC_T)
 #define RGUI_TR RGUI_T(KC_R)
 #define RCTL_TN RCTL_T(KC_N)
 #define RSFT_TS RSFT_T(KC_S)
 
-#define LSFT_T4 LSFT_T(DE_4)
+// Scheme: GACS/◆⎇⎈⇧
+// left-hand
+#define LGUI_TH LGUI_T(KC_H)
+#define LALT_TA LALT_T(KC_A)
+#define LCTL_TE LCTL_T(KC_E)
+#define LSFT_TI LSFT_T(KC_I)
+// right-hand
+#define RSFT_TT RSFT_T(KC_T)
+#define RCTL_TR RCTL_T(KC_R)
+#define RALT_TN RALT_T(KC_N)
+#define RGUI_TS RGUI_T(KC_S)
+
+// for Layer 4 (Movement/Numbers):
+// Keys: KC_LEFT, KC_DOWN, KC_RGHT, KC_END
+// Keys: DE_4, DE_5, DE_6, KC_COMM
+
+// Scheme: SCGA/⇧⎈◆⎇
+// left-hand
+#define LSFT_TLEFT LSFT_T(KC_LEFT)
+#define LCTL_TDOWN LCTL_T(KC_DOWN)
+#define LGUI_TRGHT LGUI_T(KC_RGHT)
+#define LALT_TEND  LALT_T(KC_END)
+// right-hand
+#define RALT_T4    RALT_T(DE_4)
+#define RGUI_T5    RGUI_T(DE_5)
+#define RCTL_T6    RCTL_T(DE_6)
+#define RSFT_TCOMM RSFT_T(KC_COMM)
+
+// Scheme: GACS/◆⎇⎈⇧
+// left-hand
+#define LGUI_TLEFT LGUI_T(KC_LEFT)
+#define LALT_TDOWN LALT_T(KC_DOWN)
+#define LCTL_TRGHT LCTL_T(KC_RGHT)
+#define LSFT_TEND  LSFT_T(KC_END)
+// right-hand
+#define RSFT_T4    RSFT_T(DE_4)
+#define RCTL_T5    RCTL_T(DE_5)
+#define RALT_T6    RALT_T(DE_6)
+#define RGUI_TCOMM RGUI_T(KC_COMM)
 
 /*
 X-Bow Nature
@@ -125,7 +192,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_ESC,   KC_F1,    KC_F2,    KC_F3,    KC_F4,    KC_F5,      KC_F6,      KC_F7,  KC_F8,    KC_F9,    KC_F10,   KC_F11,  KC_F12,   KC_INS,             KC_DEL,
     DE_CIRC,  KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                   KC_6,   KC_7,     KC_8,     KC_9,     KC_0,    NE_MINS,  NE_GRV,   KC_BSPC,
     KC_TAB,   KC_K,     KC_DOT,   KC_O,     KC_COMM,  KC_Z,                   KC_V,   KC_G,     KC_C,     KC_L,     DE_SS,   KC_Y,     DE_ACUT,  KC_RALT,  KC_LNUM,
-    MO_KOY3,  LSFT_TH,  LCTL_TA,  KC_E,     KC_I,     KC_U,       MO_MOUS,    KC_D,   RALT_TT,  RGUI_TR,  RCTL_TN,  RSFT_TS, KC_F,     MO_KOY3,            KC_ENT,
+    // Scheme: SCGA/⇧⎈◆⎇
+    MO_KOY3,  LSFT_TH,  LCTL_TA,  LGUI_TE,  LALT_TI,  KC_U,       MO_MOUS,    KC_D,   RALT_TT,  RGUI_TR,  RCTL_TN,  RSFT_TS, KC_F,     MO_KOY3,            KC_ENT,
+    // Scheme: GACS/◆⎇⎈⇧
+    //MO_KOY3,  LGUI_TH,  LALT_TA,  LCTL_TE,  LSFT_TI,  KC_U,       MO_MOUS,    KC_D,   RSFT_TT,  RCTL_TR,  RALT_TN,  RGUI_TS, KC_F,     MO_KOY3,            KC_ENT,
     MO_KOY4,  KC_X,     KC_Q,     DE_ADIA,  DE_UDIA,  DE_ODIA,    KC_ENT,     KC_B,   KC_P,     KC_W,     KC_M,     KC_J,    KC_RSFT,            KC_UP,
     KC_LCTL,  KC_LGUI,  KC_LALT,            MO_KOY3,          KC_SPC, KC_SPC, MO_KOY4,          KC_RALT,            MO_FUNC, KC_RCTL,  KC_LEFT,  KC_DOWN,  KC_RGHT),
 
@@ -149,7 +219,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,  _______,  _______,  _______,  _______,  _______,    _______,    _______, _______, _______,  _______,  _______, _______,  _______,            _______,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX,  KC_PSLS,  KC_PAST, KC_PMNS,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  KC_PGUP,  KC_BSPC,  KC_UP,    KC_DEL,   KC_PGDN,                XXXXXXX, DE_7,    DE_8,     DE_9,     KC_PPLS, KC_PMNS,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    XXXXXXX,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_END,     XXXXXXX,    XXXXXXX, LSFT_T4, DE_5,     DE_6,     KC_PCMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
+    XXXXXXX,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_END,     XXXXXXX,    XXXXXXX, LSFT_T4, DE_5,     DE_6,     KC_COMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
     _______,  KC_ESC,   KC_TAB,   KC_INS,   KC_ENT,   KC_UNDO,    XXXXXXX,    KC_COLN, DE_1,    DE_2,     DE_3,     KC_SCLN, XXXXXXX,            XXXXXXX,
     XXXXXXX,  XXXXXXX,  KC_P0,              DE_0,             DE_0, XXXXXXX,  _______,          XXXXXXX,            XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
 

@@ -113,7 +113,7 @@ No modifier/mod-tap _ 	          _
 #define LGUI_TE LGUI_T(KC_E)
 #define LALT_TI LALT_T(KC_I)
 // right-hand
-#define RALT_TT RALT_T(KC_T)
+#define RALT_TT LALT_T(KC_T)
 #define RGUI_TR RGUI_T(KC_R)
 #define RCTL_TN RCTL_T(KC_N)
 #define RSFT_TS RSFT_T(KC_S)
@@ -127,7 +127,7 @@ No modifier/mod-tap _ 	          _
 // right-hand
 #define RSFT_TT RSFT_T(KC_T)
 #define RCTL_TR RCTL_T(KC_R)
-#define RALT_TN RALT_T(KC_N)
+#define RALT_TN LALT_T(KC_N)
 #define RGUI_TS RGUI_T(KC_S)
 
 // for Layer 4 (Movement/Numbers):

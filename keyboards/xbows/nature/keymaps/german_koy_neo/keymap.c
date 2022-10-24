@@ -136,10 +136,14 @@ No modifier/mod-tap _ 	          _
 
 // Scheme: SCGA/⇧⎈◆⎇
 // left-hand
-#define LSFT_TLEFT LSFT_T(KC_LEFT)
-#define LCTL_TDOWN LCTL_T(KC_DOWN)
-#define LGUI_TRGHT LGUI_T(KC_RGHT)
+// no mods for the cursor keys, there will be hold often
+//#define LSFT_TLEFT LSFT_T(KC_LEFT)
+//#define LCTL_TDOWN LCTL_T(KC_DOWN)
+//#define LGUI_TRGHT LGUI_T(KC_RGHT)
 #define LALT_TEND  LALT_T(KC_END)
+#define LSFT_THOME LSFT_T(KC_HOME) // move shift mod one key to the left
+//#define LCTL_TTAB  LCTL_T(KC_TAB)  // move ctrl mod one key down
+//#define LGUI_TINS  LGUI_T(KC_INS)  // move gui mod one key down
 // right-hand
 #define RALT_T4    RALT_T(DE_4)
 #define RGUI_T5    RGUI_T(DE_5)
@@ -148,9 +152,10 @@ No modifier/mod-tap _ 	          _
 
 // Scheme: GACS/◆⎇⎈⇧
 // left-hand
-#define LGUI_TLEFT LGUI_T(KC_LEFT)
-#define LALT_TDOWN LALT_T(KC_DOWN)
-#define LCTL_TRGHT LCTL_T(KC_RGHT)
+// no mods for the cursor keys, there will be hold often
+//#define LGUI_TLEFT LGUI_T(KC_LEFT)
+//#define LALT_TDOWN LALT_T(KC_DOWN)
+//#define LCTL_TRGHT LCTL_T(KC_RGHT)
 #define LSFT_TEND  LSFT_T(KC_END)
 // right-hand
 #define RSFT_T4    RSFT_T(DE_4)
@@ -220,8 +225,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,  _______,  _______,  _______,  _______,  _______,    _______,    _______, _______, _______,  _______,  _______, _______,  _______,            _______,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX,  KC_PSLS,  KC_PAST, KC_PMNS,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  KC_PGUP,  KC_BSPC,  KC_UP,    KC_DEL,   KC_PGDN,                XXXXXXX, DE_7,    DE_8,     DE_9,     KC_PPLS, KC_PMNS,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    // Scheme: SCGA/⇧⎈◆⎇
-    XXXXXXX,  KC_HOME,  LSFT_TLEFT,  LCTL_TDOWN,  LGUI_TRGHT,  LALT_TEND,     XXXXXXX,    XXXXXXX, RALT_T4, RGUI_T5,  RCTL_T6,  RSFT_TCOMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
+    // Scheme: SCGA/⇧⎈◆⎇ - no mods for cursor keys, because there will be hold often
+    XXXXXXX,  LSFT_THOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  LALT_TEND,     XXXXXXX,    XXXXXXX, RALT_T4, RGUI_T5,  RCTL_T6,  RSFT_TCOMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
     _______,  KC_ESC,   KC_TAB,   KC_INS,   KC_ENT,   KC_UNDO,    XXXXXXX,    KC_COLN, DE_1,    DE_2,     DE_3,     KC_SCLN, XXXXXXX,            XXXXXXX,
     XXXXXXX,  XXXXXXX,  KC_P0,              DE_0,             DE_0, XXXXXXX,  _______,          XXXXXXX,            XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
 

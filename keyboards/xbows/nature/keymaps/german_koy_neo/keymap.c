@@ -20,7 +20,7 @@
 
 // Configure the global tapping term (default: 200ms)
 #undef TAPPING_TERM
-#define TAPPING_TERM 300
+#define TAPPING_TERM 200
 
 // Prevent normal rollover on alphas from accidentally triggering mods.
 #define IGNORE_MOD_TAP_INTERRUPT
@@ -199,7 +199,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     DE_CIRC,  KC_1,     KC_2,     KC_3,     KC_4,     KC_5,                   KC_6,   KC_7,     KC_8,     KC_9,     KC_0,    NE_MINS,  NE_GRV,   KC_BSPC,
     KC_TAB,   KC_K,     KC_DOT,   KC_O,     KC_COMM,  KC_Z,                   KC_V,   KC_G,     KC_C,     KC_L,     DE_SS,   KC_Y,     DE_ACUT,  KC_RALT,  KC_LNUM,
     // Scheme: SCGA/⇧⎈◆⎇
-    MO_KOY3,  LSFT_TH,  LCTL_TA,  LGUI_TE,  LALT_TI,  KC_U,       MO_MOUS,    KC_D,   RALT_TT,  RGUI_TR,  RCTL_TN,  RSFT_TS, KC_F,     MO_KOY3,            KC_ENT,
+    // Do not use mod tab GA on left side because of often missuse
+    MO_KOY3,  LSFT_TH,  LCTL_TA,  KC_E,     KC_I,     KC_U,       MO_MOUS,    KC_D,   RALT_TT,  RGUI_TR,  RCTL_TN,  RSFT_TS, KC_F,     MO_KOY3,            KC_ENT,
     // Scheme: GACS/◆⎇⎈⇧
     //MO_KOY3,  LGUI_TH,  LALT_TA,  LCTL_TE,  LSFT_TI,  KC_U,       MO_MOUS,    KC_D,   RSFT_TT,  RCTL_TR,  RALT_TN,  RGUI_TS, KC_F,     MO_KOY3,            KC_ENT,
     MO_KOY4,  KC_X,     KC_Q,     DE_ADIA,  DE_UDIA,  DE_ODIA,    KC_ENT,     KC_B,   KC_P,     KC_W,     KC_M,     KC_J,    KC_RSFT,            KC_UP,
@@ -214,8 +215,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     _______,  _______,  _______,            _______,         _______, _______,_______,          _______,            _______, _______,  _______,  _______,  _______),
 
   [_KOY3] = LAYOUT(
-    RESET,    KC_F13,   KC_F14,   KC_F15,   KC_F16,   KC_F17,     KC_F18,     KC_F19,  KC_F20,  KC_F21,   KC_F22,   KC_F23,  KC_F24,   KC_PAUS,            KC_PSCR,
-    DEBUG,    XXXXXXX,  DE_SUP2,  DE_SUP3,  XXXXXXX,  XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,
+    QK_BOOT,  KC_F13,   KC_F14,   KC_F15,   KC_F16,   KC_F17,     KC_F18,     KC_F19,  KC_F20,  KC_F21,   KC_F22,   KC_F23,  KC_F24,   KC_PAUS,            KC_PSCR,
+    XXXXXXX,  XXXXXXX,  DE_SUP2,  DE_SUP3,  XXXXXXX,  XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  K_DOTS,   DE_UNDS,  DE_LBRC,  DE_RBRC,  DE_CIRC,                DE_EXLM, DE_LABK, DE_RABK,  DE_EQL,   DE_AMPR, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,
     _______,  DE_BSLS,  DE_SLSH,  DE_LCBR,  DE_RCBR,  DE_ASTR,    XXXXXXX,    DE_QUES, DE_LPRN, DE_RPRN,  DE_MINS,  DE_COLN, DE_AT,    _______,            _______,
     _______,  DE_HASH,  DE_DLR,   DE_PIPE,  DE_TILD,  DE_GRV,     XXXXXXX,    DE_PLUS, DE_PERC, DE_DQUO,  DE_QUOT,  DE_SCLN, _______,            _______,
@@ -225,10 +226,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     XXXXXXX,  _______,  _______,  _______,  _______,  _______,    _______,    _______, _______, _______,  _______,  _______, _______,  _______,            _______,
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,                XXXXXXX, XXXXXXX, XXXXXXX,  KC_PSLS,  KC_PAST, KC_PMNS,  XXXXXXX,  XXXXXXX,
     XXXXXXX,  KC_PGUP,  KC_BSPC,  KC_UP,    KC_DEL,   KC_PGDN,                XXXXXXX, DE_7,    DE_8,     DE_9,     KC_PPLS, KC_PMNS,  XXXXXXX,  XXXXXXX,  XXXXXXX,
-    // Scheme: SCGA/⇧⎈◆⎇ - no mods for cursor keys, because there will be hold often
-    XXXXXXX,  LSFT_THOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  LALT_TEND,     XXXXXXX,    XXXXXXX, RALT_T4, RGUI_T5,  RCTL_T6,  RSFT_TCOMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
+    XXXXXXX,  KC_HOME,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_END,     XXXXXXX,    XXXXXXX, DE_4,    DE_5,     DE_6,     KC_COMM, KC_PDOT,  XXXXXXX,            XXXXXXX,
     _______,  KC_ESC,   KC_TAB,   KC_INS,   KC_ENT,   KC_UNDO,    XXXXXXX,    KC_COLN, DE_1,    DE_2,     DE_3,     KC_SCLN, XXXXXXX,            XXXXXXX,
-    XXXXXXX,  XXXXXXX,  KC_P0,              DE_0,             DE_0, XXXXXXX,  _______,          XXXXXXX,            XXXXXXX, XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX),
+    _______,  _______,  _______,            _______,             DE_0, KC_P0,  _______,          _______,            _______, _______,  _______,  _______,  _______),
 
   [_MOUSE] = LAYOUT(
     XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,    XXXXXXX,      XXXXXXX,    XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,          XXXXXXX,      XXXXXXX,                  XXXXXXX,
@@ -296,8 +296,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
    * |---------------------------------------------------------------------------------------------------------------------------------|
    */
     [_FUNC] = LAYOUT(
-      RESET,   TO(_KOY1), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_XBOWS), XXXXXXX, KC_CALC, KC_MYCM, KC_MSEL, KC_MAIL, NK_TOGG, EEP_RST,
-      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NLCK,
+      QK_BOOT,TO(_KOY1), XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, TO(_XBOWS), XXXXXXX, KC_CALC, KC_MYCM, KC_MSEL, KC_MAIL, NK_TOGG, EE_CLR,
+      _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_NUM,
       RGB_TOG, RGB_MOD, RGB_VAI, RGB_HUI, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_HOME,
       _______, RGB_SPD, RGB_VAD, RGB_SPI, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_END,
       _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, _______, KC_MUTE, KC_VOLU,
